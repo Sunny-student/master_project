@@ -35,59 +35,6 @@
 # print(f"✅ E 欄（從第2列起）共有 {count} 個有內容的儲存格。")
 
 
-# import os
-
-# import openpyxl
-
-# # 指定 Excel 檔案路徑
-# folder_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents"
-# # file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
-
-# printed = []  # 用來記錄已經印過的 D 欄內容
-
-# file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
-# wb = openpyxl.load_workbook(file_path, data_only=True)
-# sheet = wb.active
-
-
-# for row in range(2, sheet.max_row + 1):  # 從第2列開始
-#     j_value = sheet[f"J{row}"].value
-#     d_value = sheet[f"D{row}"].value
-
-#     # 若 J 欄有數值且不為 0
-#     if isinstance(j_value, (int, float)) and j_value != 0:
-#         # 若 D 欄內容尚未印過
-#         if d_value not in printed:
-#             printed.append(d_value)
-#             print(d_value)
-#             # print(printed)
-
-# for filename in os.listdir(folder_path):
-#     if filename.lower().endswith(".xlsx"):
-#         file_path = os.path.join(folder_path, filename)
-#         # print(file_path)
-#         # 讀取 Excel
-#         wb = openpyxl.load_workbook(file_path, data_only=True)
-#         sheet = wb.active
-
-
-#         for row in range(2, sheet.max_row + 1):  # 從第2列開始
-#             j_value = sheet[f"J{row}"].value
-#             d_value = sheet[f"D{row}"].value
-
-#             # 若 J 欄有數值且不為 0
-#             if isinstance(j_value, (int, float)) and j_value != 0:
-#                 # 若 D 欄內容尚未印過
-#                 if d_value not in printed:
-#                     printed.append(d_value)
-#                     print(d_value)
-#                     # if not d_value.startswith("5000"):
-#                         # print(file_path)
-#                     # print(file_path)
-
-# print(len(printed))
-
-
 import os
 
 import openpyxl
@@ -95,7 +42,7 @@ import openpyxl
 # 指定 Excel 檔案路徑
 folder_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents"
 # file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
-count = 0
+
 printed = []  # 用來記錄已經印過的 D 欄內容
 
 file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
@@ -110,11 +57,9 @@ for row in range(2, sheet.max_row + 1):  # 從第2列開始
     # 若 J 欄有數值且不為 0
     if isinstance(j_value, (int, float)) and j_value != 0:
         # 若 D 欄內容尚未印過
-        if d_value.startswith("P8"):
-            count+=1
+        if d_value not in printed:
             printed.append(d_value)
             print(d_value)
-            print(file_path)
             # print(printed)
 
 for filename in os.listdir(folder_path):
@@ -133,12 +78,67 @@ for filename in os.listdir(folder_path):
             # 若 J 欄有數值且不為 0
             if isinstance(j_value, (int, float)) and j_value != 0:
                 # 若 D 欄內容尚未印過
-                if d_value.startswith("P8"):
-                    count+=1
+                if d_value not in printed:
                     printed.append(d_value)
                     print(d_value)
                     # if not d_value.startswith("5000"):
                         # print(file_path)
-                    print(file_path)
+                    # print(file_path)
 
 print(len(printed))
+
+
+# import os
+
+# import openpyxl
+
+# # 指定 Excel 檔案路徑
+# folder_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents"
+# # file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
+# count = 0
+# printed = []  # 用來記錄已經印過的 D 欄內容
+
+# file_path = "C:/Users/robotic/Desktop/Luke/油漆調色_原始資料/My Documents/GMPC05000C23A07.xlsx"
+# wb = openpyxl.load_workbook(file_path, data_only=True)
+# sheet = wb.active
+
+
+# for row in range(2, sheet.max_row + 1):  # 從第2列開始
+#     j_value = sheet[f"J{row}"].value
+#     d_value = sheet[f"D{row}"].value
+
+#     # 若 J 欄有數值且不為 0
+#     if isinstance(j_value, (int, float)) and j_value != 0:
+#         # 若 D 欄內容尚未印過
+#         if d_value.startswith("P8"):
+#             count+=1
+#             printed.append(d_value)
+#             print(d_value)
+#             print(file_path)
+#             # print(printed)
+
+# for filename in os.listdir(folder_path):
+#     if filename.lower().endswith(".xlsx"):
+#         file_path = os.path.join(folder_path, filename)
+#         # print(file_path)
+#         # 讀取 Excel
+#         wb = openpyxl.load_workbook(file_path, data_only=True)
+#         sheet = wb.active
+
+
+#         for row in range(2, sheet.max_row + 1):  # 從第2列開始
+#             j_value = sheet[f"J{row}"].value
+#             d_value = sheet[f"D{row}"].value
+
+#             # 若 J 欄有數值且不為 0
+#             if isinstance(j_value, (int, float)) and j_value != 0:
+#                 # 若 D 欄內容尚未印過
+#                 if d_value.startswith("P8"):
+#                     count+=1
+#                     printed.append(d_value)
+#                     print(d_value)
+#                     # if not d_value.startswith("5000"):
+#                         # print(file_path)
+#                     print(file_path)
+
+# print(len(printed))
